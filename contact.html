@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="si">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - PASIYA-NEWS.lk</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script src="../firebase.js" defer></script>
+  <script>
+    async function sendContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const msg = document.getElementById('message').value;
+      await db.collection('contacts').add({
+        name, email, message: msg, createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      alert('Message sent — thanks!');
+      e.target.reset();
+    }
+  </script>
+</head>
+<body>
+  <a href="../index.html">&larr; Back</a>
+  <main class="container">
+    <h1>Contact Us</h1>
+    <form onsubmit="sendContact(event)">
+      <input id="name" required placeholder="Name" />
+      <input id="email" type="email" required placeholder="Email" />
+      <textarea id="message" required placeholder="Your message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </main>
+</body>
+</html>
