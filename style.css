@@ -1,0 +1,50 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+text-align: center;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: #1a1a1a;
+  padding: 30px 10px;
+}
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #111;
+  padding: 20px;
+}
+.live {
+  margin: 30px auto;
+  padding: 20px;
+  background: #222;
+  border-radius: 10px;
+  width: 80%;
+}
+#live-counter {
+  font-size: 2em;
+  color: #00ff88;
+  margin-top: 10px;
+}
+footer {
+  background: #1a1a1a;
+  padding: 10px;
+  font-size: 0.9em;
+}
+```
+
+*3. script.js*
+```javascript
+let count = 2300000;
+
+function updateCounter() {
+  count += 8;
+  document.getElementById("bot-count").innerText = count.toLocaleString();
+  document.getElementById("live-counter").innerText = `${count.toLocaleString()} bots deployed`;
+}
+
+setInterval(updateCounter, 1000); // every second
