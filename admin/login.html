@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <script src="../firebase.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h2>Admin Login</h2>
+    <input id="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <script>
+      function login(){
+        const e = document.getElementById('email').value;
+        const p = document.getElementById('password').value;
+        firebase.auth().signInWithEmailAndPassword(e,p)
+          .then(()=> location.href = 'dashboard.html')
+          .catch(err => alert(err.message));
+      }
+    </script>
+  </main>
+</body>
+</html>
